@@ -27,7 +27,7 @@ add_agents_md_pointer() {
   local agents_file="$project_dir/AGENTS.md"
   local pointer="- For building apps or coding challenges, follow \`.agents/skills/$skill_name/SKILL.md\`."
   touch "$agents_file"
-  if ! grep -qF "$pointer" "$agents_file"; then
+  if ! grep -qF -- "$pointer" "$agents_file"; then
     printf '\n%s\n' "$pointer" >> "$agents_file"
     echo "  -> pointer added to $agents_file"
   fi
