@@ -6,7 +6,7 @@ My reusable skills for AI coding agents. One `SKILL.md` works in every agent tha
 
 | Skill | What it does |
 |---|---|
-| `ai-coding-challenge` | Build full-stack AI apps fast: SOLID folders, readable code, shadcn UI, Docker optional, same code local + AWS, OTel zero-code tracing with baggage, security, tests, LLM evals, human-in-loop only for key decisions |
+| `ai-coding` | Build full-stack AI apps fast: SOLID folders, readable code, shadcn UI, Docker optional, same code local + AWS, OTel zero-code tracing with baggage, security, tests, LLM evals, human-in-loop only for key decisions |
 
 ## Install
 
@@ -51,8 +51,8 @@ The install script copies the skill to `.agents/skills/` (shared) and `.claude/s
 
 ## How to use
 
-- Most agents pick the skill automatically from its description ("build a coding challenge", "full-stack app").
-- To force it, say: `use the ai-coding-challenge skill` (or `/ai-coding-challenge` in Claude Code).
+- Most agents pick the skill automatically from its description ("build a coding project", "full-stack app").
+- To force it, say: `use the ai-coding skill` (or `/ai-coding` in Claude Code).
 
 ## Update a skill
 

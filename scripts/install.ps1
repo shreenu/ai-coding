@@ -24,7 +24,7 @@ function Copy-Skill([string]$SkillPath, [string]$TargetDir) {
 # Adds a one-line pointer to AGENTS.md so agents without skill support still follow the skill.
 function Add-AgentsMdPointer([string]$Dir, [string]$SkillName) {
   $file = Join-Path $Dir "AGENTS.md"
-  $pointer = "- For building apps or coding challenges, follow ``.agents/skills/$SkillName/SKILL.md``."
+  $pointer = "- For building apps or coding projects, follow ``.agents/skills/$SkillName/SKILL.md``."
   if (-not (Test-Path $file)) { New-Item -ItemType File -Path $file | Out-Null }
   if (-not (Select-String -Path $file -SimpleMatch $pointer -Quiet)) {
     Add-Content -Path $file -Value "`n$pointer"

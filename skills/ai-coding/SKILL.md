@@ -1,9 +1,9 @@
 ---
-name: "ai-coding-challenge"
-description: "Build full-stack AI coding challenges fast and accurately: SOLID folders, readable code, shadcn UI, Docker/AWS-ready backend, tests, OTel zero-code observability, security, LLM evals. Use for any coding challenge or full app build."
+name: "ai-coding"
+description: "Build full-stack AI coding projects fast and accurately: SOLID folders, readable code, shadcn UI, Docker/AWS-ready backend, tests, OTel zero-code observability, security, LLM evals. Use for any coding project or full app build."
 ---
 
-# AI-Assisted Coding Challenge
+# AI coding
 
 Goal: ship a **working, testable, readable** app **fast**, without cutting corners on security, observability, or evals.
 
@@ -49,7 +49,7 @@ Ask the user ONLY at these gates. Decide everything else yourself and log it in 
 **Stop and ask when:**
 1. **Plan checkpoint (once, at start)** - show the 1-page plan (Section 2) and wait for OK.
 2. **Requirements conflict or are unclear** in a way that changes the design (not small details).
-3. **Auth or data storage choice** is not given in the challenge (e.g., Cognito vs JWT, Postgres vs DynamoDB).
+3. **Auth or data storage choice** is not given in the project requirements (e.g., Cognito vs JWT, Postgres vs DynamoDB).
 4. **Anything irreversible or costly** - deleting data/files, paid cloud resources, real credentials.
 5. **Scope change** - a feature turns out much bigger than expected.
 
@@ -97,10 +97,10 @@ The exact same code runs locally and on AWS. Only **environment variables** chan
 
 ## 4. Default tech stack
 
-Use what the challenge asks for. If not specified:
+Use what the project requirements ask for. If not specified:
 
 - **Frontend:** React + Vite + TypeScript, **shadcn/ui**, **lucide-react** icons, Tailwind, TanStack Query for API calls
-- **Backend:** NestJS (TypeScript) or FastAPI (Python) - pick based on the challenge (Python if heavy AI/ML)
+- **Backend:** NestJS (TypeScript) or FastAPI (Python) - pick based on the project requirements (Python if heavy AI/ML)
 - **AI/LLM:** AWS Bedrock SDK; LangGraph only for multi-step agents
 - **DB:** Postgres dialect everywhere (RDS on AWS). Locally:
   - Docker mode -> Postgres container
@@ -247,7 +247,7 @@ Use **OpenTelemetry auto-instrumentation** - no tracing code in business logic. 
 
 Write `docs/THREAT_MODEL.md` (short STRIDE table: threat -> risk -> mitigation) and implement:
 
-- **Auth:** JWT with guards/middleware; locally signed with a dev secret, on AWS verified against Cognito - same guard code, issuer/keys from env. Role checks on protected routes. Short-lived tokens.
+- **Auth:** For local development, use Basic Authentication with credentials supplied through environment variables. On AWS, use JWT with guards/middleware verified against Cognito. Role checks on protected routes. Short-lived tokens.
 - **Secrets:** never in code or git. `.env` locally (gitignored), AWS Secrets Manager in prod (injected as env vars by ECS, so code doesn't change). Commit only example env files.
 - **PII:** identify PII fields; redact in logs and traces; do not send PII to the LLM unless required (mask first); encrypt sensitive columns if needed.
 - **Input:** validate every request (DTO/schema); parameterized queries via ORM.
@@ -281,7 +281,7 @@ Write `docs/THREAT_MODEL.md` (short STRIDE table: threat -> risk -> mitigation) 
 ## 13. Fast workflow order
 
 1. Check machine + pick run mode (Section 0)
-2. Read challenge -> write `docs/PLAN.md` -> **checkpoint**
+2. Read requirements -> write `docs/PLAN.md` -> **checkpoint**
 3. Scaffold repo: folders, env example files, package scripts, lint config, Dockerfiles + compose
 4. Build one **vertical slice** end to end (UI -> API -> DB/LLM) and get it running in the detected mode
 5. Add remaining features, each with tests
