@@ -13,7 +13,7 @@ My reusable skills for AI coding agents. One `SKILL.md` works in every agent tha
 ### Option 1: one command (all agents)
 
 ```bash
-npx skills add shreenu/agent-skills
+npx skills add https://github.com/shreenu/ai-coding.git
 ```
 
 Pick the agents you use (Claude Code, Codex, Cursor, Copilot, Gemini CLI, ...). It installs into each agent's skills folder.
